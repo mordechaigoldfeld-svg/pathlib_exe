@@ -1,0 +1,17 @@
+from pathlib import Path
+
+project_root=Path('my_new_project')
+data_folder = project_root / "data"
+logs_folder = project_root / "logs"
+data_folder.mkdir(parents=True, exist_ok=True)
+logs_folder.mkdir(parents=True, exist_ok=True)
+print(f"✅ התיקיות נוצרו בכתובת: {project_root.absolute()}")
+file_path = data_folder / "hello_pathlib.txt"
+file_path.write_text("זהו הקובץ הראשון שלי שנוצר בעזרת pathlib!\nבהצלחה בלימודי פייתון.", encoding="utf-8")
+print(f"✅ הקובץ '{file_path.name}' נוצר בהצלחה.")
+if file_path.exists():
+    content = file_path.read_text(encoding="utf-8")
+    print("--- תוכן הקובץ שנוצר ---")
+    print(content)
+    print("------------------------")
+print(f"הנתיב המלא של הקובץ לשימוש במערכת: {file_path.resolve()}")
